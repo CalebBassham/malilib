@@ -41,22 +41,22 @@ import fi.dy.masa.malilib.gui.GuiBase;
 
 public class InventoryOverlay
 {
-    public static final Identifier TEXTURE_BREWING_STAND    = new Identifier("textures/gui/container/brewing_stand.png");
-    public static final Identifier TEXTURE_DISPENSER        = new Identifier("textures/gui/container/dispenser.png");
-    public static final Identifier TEXTURE_DOUBLE_CHEST     = new Identifier("textures/gui/container/generic_54.png");
-    public static final Identifier TEXTURE_FURNACE          = new Identifier("textures/gui/container/furnace.png");
-    public static final Identifier TEXTURE_HOPPER           = new Identifier("textures/gui/container/hopper.png");
-    public static final Identifier TEXTURE_PLAYER_INV       = new Identifier("textures/gui/container/hopper.png");
-    public static final Identifier TEXTURE_SINGLE_CHEST     = new Identifier("textures/gui/container/shulker_box.png");
+    public static final Identifier TEXTURE_BREWING_STAND    = Identifier.of("textures/gui/container/brewing_stand.png");
+    public static final Identifier TEXTURE_DISPENSER        = Identifier.of("textures/gui/container/dispenser.png");
+    public static final Identifier TEXTURE_DOUBLE_CHEST     = Identifier.of("textures/gui/container/generic_54.png");
+    public static final Identifier TEXTURE_FURNACE          = Identifier.of("textures/gui/container/furnace.png");
+    public static final Identifier TEXTURE_HOPPER           = Identifier.of("textures/gui/container/hopper.png");
+    public static final Identifier TEXTURE_PLAYER_INV       = Identifier.of("textures/gui/container/hopper.png");
+    public static final Identifier TEXTURE_SINGLE_CHEST     = Identifier.of("textures/gui/container/shulker_box.png");
 
     private static final EquipmentSlot[] VALID_EQUIPMENT_SLOTS = new EquipmentSlot[] { EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET };
     public static final InventoryProperties INV_PROPS_TEMP = new InventoryProperties();
 
     private static final Identifier[] EMPTY_SLOT_TEXTURES = new Identifier[] {
-            new Identifier("item/empty_armor_slot_boots"),
-            new Identifier("item/empty_armor_slot_leggings"),
-            new Identifier("item/empty_armor_slot_chestplate"),
-            new Identifier("item/empty_armor_slot_helmet") };
+            Identifier.of("item/empty_armor_slot_boots"),
+            Identifier.of("item/empty_armor_slot_leggings"),
+            Identifier.of("item/empty_armor_slot_chestplate"),
+            Identifier.of("item/empty_armor_slot_helmet") };
 
     public static void renderInventoryBackground(InventoryRenderType type, int x, int y, int slotsPerRow, int totalSlots, MinecraftClient mc)
     {
@@ -208,7 +208,7 @@ public class InventoryOverlay
 
         if (entity.getEquippedStack(EquipmentSlot.OFFHAND).isEmpty())
         {
-            Identifier texture = new Identifier("minecraft:item/empty_armor_slot_shield");
+            Identifier texture = Identifier.ofVanilla("item/empty_armor_slot_shield");
             RenderUtils.renderSprite(x + 28 + 1, y + 3 * 18 + 7 + 1, 16, 16, PlayerScreenHandler.BLOCK_ATLAS_TEXTURE, texture, drawContext);
         }
 

@@ -36,8 +36,7 @@ public abstract class MixinMinecraftClient
     private void onPostKeyboardInput(CallbackInfo ci)
     {
         KeybindMulti.reCheckPressedKeys();
-        TickHandler.getInstance().onClientTick((MinecraftClient)(Object) this);
-    }
+        TickHandler.getInstance().onClientTick((MinecraftClient)(Object) this);}
 
     @Inject(method = "joinWorld(Lnet/minecraft/client/world/ClientWorld;Lnet/minecraft/client/gui/screen/DownloadingTerrainScreen$WorldEntryReason;)V", at = @At("HEAD"))
     private void onLoadWorldPre(ClientWorld worldClientIn, DownloadingTerrainScreen.WorldEntryReason worldEntryReason, CallbackInfo ci)
