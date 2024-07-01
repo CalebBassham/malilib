@@ -1,6 +1,8 @@
 package fi.dy.masa.malilib.mixin;
 
 import javax.annotation.Nullable;
+
+import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -37,8 +39,8 @@ public abstract class MixinMinecraftClient
         TickHandler.getInstance().onClientTick((MinecraftClient)(Object) this);
     }
 
-    @Inject(method = "joinWorld(Lnet/minecraft/client/world/ClientWorld;)V", at = @At("HEAD"))
-    private void onLoadWorldPre(@Nullable ClientWorld worldClientIn, CallbackInfo ci)
+    @Inject(method = "joinWorld(Lnet/minecraft/client/world/ClientWorld;Lnet/minecraft/client/gui/screen/DownloadingTerrainScreen$WorldEntryReason;)V", at = @At("HEAD"))
+    private void onLoadWorldPre(ClientWorld worldClientIn, DownloadingTerrainScreen.WorldEntryReason worldEntryReason, CallbackInfo ci)
     {
         // Only handle dimension changes/respawns here.
         // The initial join is handled in MixinClientPlayNetworkHandler onGameJoin 
@@ -49,8 +51,8 @@ public abstract class MixinMinecraftClient
         }
     }
 
-    @Inject(method = "joinWorld(Lnet/minecraft/client/world/ClientWorld;)V", at = @At("RETURN"))
-    private void onLoadWorldPost(@Nullable ClientWorld worldClientIn, CallbackInfo ci)
+    @Inject(method = "joinWorld(Lnet/minecraft/client/world/ClientWorld;Lnet/minecraft/client/gui/screen/DownloadingTerrainScreen$WorldEntryReason;)V", at = @At("RETURN"))
+    private void onLoadWorldPost(ClientWorld worldClientIn, DownloadingTerrainScreen.WorldEntryReason worldEntryReason, CallbackInfo ci)
     {
         if (this.worldBefore != null)
         {
