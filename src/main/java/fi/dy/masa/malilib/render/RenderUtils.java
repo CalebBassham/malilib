@@ -1134,7 +1134,7 @@ public class RenderUtils
         {
             // In 1.13+ there is the uncolored Shulker Box variant, which returns null from getColor()
             final DyeColor dye = block.getColor() != null ? block.getColor() : DyeColor.PURPLE;
-            final float[] colors = dye.getColorComponents();
+            final float[] colors = dye.getEntityColor();
             color(colors[0], colors[1], colors[2], 1f);
         }
         else
